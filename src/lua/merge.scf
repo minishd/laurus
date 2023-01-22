@@ -1,0 +1,47 @@
+#? stdtmpl | standard
+#import std/[strutils, strformat, sha1, oids]
+#
+#type TreeFile* = tuple[name, content: string, isIndex: bool]
+#
+#proc mergeTree*(files: seq[TreeFile]): string =
+# result = ""
+# let packId = &"___PACK_{secureHash($genOid())}"
+# let pk_mc = packId & "_mc__"
+# let pk_rc = packId & "_rc__"
+# let pk_rr = packId & "_rr__"
+local $pk_mc = {};
+local $pk_rc = {};
+local $pk_rr = require;
+
+local require = function(mod_name)
+  local mod = $pk_mc[mod_name]
+  local ret = $pk_rc[mod_name]
+
+  if mod and not ret then
+    $pk_rc[mod_name] = mod()
+    ret = $pk_rc[mod_name]
+  end
+
+  if ret ~= nil then
+    return ret
+  else
+    return $pk_rr(mod_name)
+  end
+end
+
+# var indexContent: string
+#
+# for file in files:
+#  if file.isIndex:
+#   indexContent = file.content
+#   continue
+#  end if
+$pk_mc[$file.name.escape] = (function()
+$file.content
+end);
+
+# end for
+return (function()
+$indexContent
+end)();
+#end proc
