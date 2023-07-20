@@ -1,5 +1,5 @@
 # laurus
-This tool merges a Lua source tree into one output file. It can also minify the output or compile it into Lua 5.1 bytecode. The code it generates is compatible with all versions of Lua.
+This tool merges a Lua source tree into one output file. It can also minify the output or compile it into Lua 5.1 bytecode. The code it generates is compatible with Lua versions 5.1 and above.
 
 ## Installation
 This can be installed by cloning the Git repository and using `nimble install`.
